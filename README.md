@@ -31,12 +31,10 @@ spec:
     kind: CDEvent
   params:
     - name: context
-      type: object
       value:
         type: dev.cdevents.taskrun.started.v1
         source: cdeventerRun
     - name: subject
-      type: object
       value:
         id: myTaskRun123
         pipelineName: myPipeline
