@@ -3,7 +3,7 @@ module github.com/afrittoli/cdeventer
 go 1.18
 
 require (
-	github.com/cdevents/sdk-go v0.0.0-20220831193317-0c7f31ae45a7
+	github.com/cdevents/sdk-go v0.0.0-20220908103927-c3f283b46080
 	github.com/cloudevents/sdk-go/v2 v2.11.0
 	github.com/google/go-cmp v0.5.8
 	github.com/tektoncd/pipeline v0.39.0

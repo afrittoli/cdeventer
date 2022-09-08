@@ -18,6 +18,7 @@ package reconciler
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"fmt"
 
@@ -212,8 +213,9 @@ func (c *Reconciler) ReconcileKind(ctx context.Context, r *v1alpha1.Run) kreconc
 	}
 
 	var (
-		eventContext map[string]string
-		eventSubject map[string]string
+		eventContext    map[string]string
+		eventSubject    map[string]string
+		eventCustomData map[string]string
 	)
 
 	// Extract context and subject from params
@@ -227,6 +229,8 @@ func (c *Reconciler) ReconcileKind(ctx context.Context, r *v1alpha1.Run) kreconc
 			eventContext = param.Value.ObjectVal
 		case "subject":
 			eventSubject = param.Value.ObjectVal
+		case "data":
+			eventCustomData = param.Value.ObjectVal
 		default:
 			r.Status.MarkRunFailed("UnexpectedParam", "Unexpected param name %s", param.Name)
 			return fmt.Errorf("unexpected param name %s", param.Name)
@@ -253,6 +257,24 @@ func (c *Reconciler) ReconcileKind(ctx context.Context, r *v1alpha1.Run) kreconc
 
 	// Set all subject fields
 	setSubjectFields(r, event, eventSubject)
+
+	// Set the custom data if any
+	if eventCustomData != nil {
+		customDataBytes, found := eventCustomData["customData"]
+		var customData interface{}
+		err := json.Unmarshal([]byte(customDataBytes), &customData)
+		if err != nil {
+			return fmt.Errorf("could not unmarshal custom data: %v", err)
+		}
+		if !found {
+			missingParam(r, "data", "customData")
+		}
+		customDataContentType, found := eventCustomData["customDataContentType"]
+		if !found {
+			customDataContentType = "application/json"
+		}
+		event.SetCustomData(customDataContentType, customData)
+	}
 
 	logger.Info(cdevents.AsJsonString(event))
 

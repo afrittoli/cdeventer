@@ -98,6 +98,10 @@ github.com/blendle/zapdriver v1.3.1 h1:C3dydBOWYRiOk+B8X9IVZ5IOe+7cl+tGOexN4QqHf
 github.com/blendle/zapdriver v1.3.1/go.mod h1:mdXfREi6u5MArG4j9fewC+FGnXaBR+T4Ox4J2u4eHCc=
 github.com/cdevents/sdk-go v0.0.0-20220831193317-0c7f31ae45a7 h1:tHmx0jNXNEGimvvNHtEpWpiYnXtFopKVrAYqLTIG2zc=
 github.com/cdevents/sdk-go v0.0.0-20220831193317-0c7f31ae45a7/go.mod h1:s2tdZXoeijBAld9xhBWzZFssZfYk+tYVlQjjSWe9nXw=
+github.com/cdevents/sdk-go v0.0.0-20220906180749-68332d9d2c73 h1:RF+bIe/nqCc2oheiaZ11taqus4VNvTW31XFaBdxeCVM=
+github.com/cdevents/sdk-go v0.0.0-20220906180749-68332d9d2c73/go.mod h1:s2tdZXoeijBAld9xhBWzZFssZfYk+tYVlQjjSWe9nXw=
+github.com/cdevents/sdk-go v0.0.0-20220908103927-c3f283b46080 h1:nAwJymLkafJRT9JvfyzKptL/hL2IOmGVrkDlQFbfvyw=
+github.com/cdevents/sdk-go v0.0.0-20220908103927-c3f283b46080/go.mod h1:s2tdZXoeijBAld9xhBWzZFssZfYk+tYVlQjjSWe9nXw=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
 github.com/census-instrumentation/opencensus-proto v0.3.0 h1:t/LhUZLVitR1Ow2YOnduCsavhwFUklBMoGVYUCqmCqk=
 github.com/census-instrumentation/opencensus-proto v0.3.0/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
