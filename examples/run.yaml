@@ -17,3 +17,7 @@ spec:
         taskName: myTask
         url: http://example.com/myTaskRun124
         pipelineRun: myPipelineRun124
+    - name: data
+      value:
+        customDataContentType: "application/json"
+        customData: "{\"k1\": \"v1\"}"
