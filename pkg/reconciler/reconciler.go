@@ -22,7 +22,7 @@ import (
 	"errors"
 	"fmt"
 
-	cdevents "github.com/cdevents/sdk-go/pkg/api"
+	cdevents "github.com/afrittoli/cdevents-sdk-go/pkg/api"
 	cloudevents "github.com/cloudevents/sdk-go/v2"
 	"github.com/tektoncd/pipeline/pkg/apis/pipeline/v1alpha1"
 	"github.com/tektoncd/pipeline/pkg/apis/pipeline/v1beta1"

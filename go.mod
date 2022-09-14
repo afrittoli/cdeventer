@@ -3,7 +3,6 @@ module github.com/afrittoli/cdeventer
 go 1.18
 
 require (
-	github.com/cdevents/sdk-go v0.0.0-20220908103927-c3f283b46080
 	github.com/cloudevents/sdk-go/v2 v2.11.0
 	github.com/google/go-cmp v0.5.8
 	github.com/tektoncd/pipeline v0.39.0
@@ -16,6 +15,7 @@ require (
 	contrib.go.opencensus.io/exporter/prometheus v0.4.0 // indirect
 	github.com/PuerkitoBio/purell v1.1.1 // indirect
 	github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578 // indirect
+	github.com/afrittoli/cdevents-sdk-go v0.0.0-20220914153539-f2e81c5ccdb0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/blang/semver/v4 v4.0.0 // indirect
 	github.com/blendle/zapdriver v1.3.1 // indirect
