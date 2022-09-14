@@ -167,6 +167,12 @@ func setSubjectFields(r *v1alpha1.Run, event cdevents.CDEvent, subject map[strin
 			switch v := event.(type) {
 			case *cdevents.BuildFinishedEvent:
 				v.SetSubjectArtifactId(value)
+			case *cdevents.ServiceDeployedEvent:
+				v.SetSubjectArtifactId(value)
+			case *cdevents.ServiceUpgradedEvent:
+				v.SetSubjectArtifactId(value)
+			case *cdevents.ServiceRolledbackEvent:
+				v.SetSubjectArtifactId(value)
 			default:
 				unexpectedParam(r, "subject", field)
 			}
@@ -184,6 +190,21 @@ func setSubjectFields(r *v1alpha1.Run, event cdevents.CDEvent, subject map[strin
 				v.SetSubjectEnvironment(cdevents.Reference{Id: value})
 			default:
 				unexpectedParam(r, "subject", field)
+			}
+		case "repository":
+			switch v := event.(type) {
+			case *cdevents.ChangeCreatedEvent:
+				v.SetSubjectRepository(cdevents.Reference{Id: value})
+			case *cdevents.ChangeUpdatedEvent:
+				v.SetSubjectRepository(cdevents.Reference{Id: value})
+			case *cdevents.ChangeReviewedEvent:
+				v.SetSubjectRepository(cdevents.Reference{Id: value})
+			case *cdevents.ChangeMergedEvent:
+				v.SetSubjectRepository(cdevents.Reference{Id: value})
+			case *cdevents.ChangeAbandonedEvent:
+				v.SetSubjectRepository(cdevents.Reference{Id: value})
+			default:
+				unexpectedParam(r, "repository", field)
 			}
 		default:
 			unexpectedParam(r, "subject", field)
