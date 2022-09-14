@@ -21,6 +21,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"strings"
 
 	cdevents "github.com/afrittoli/cdevents-sdk-go/pkg/api"
 	cloudevents "github.com/cloudevents/sdk-go/v2"
@@ -43,6 +44,11 @@ func missingParam(r *v1alpha1.Run, param string, field string) error {
 
 func unexpectedParam(r *v1alpha1.Run, param string, field string) error {
 	r.Status.MarkRunFailed("UnexpectedParam", "Unexpected param \"%s\" in %s ", field, param)
+	return fmt.Errorf("unexpected param \"%s\" in %s ", field, param)
+}
+
+func invalidFormatParam(r *v1alpha1.Run, param string, field string) error {
+	r.Status.MarkRunFailed("InvalidFormatParam", "Unexpected format for param \"%s\" in %s ", field, param)
 	return fmt.Errorf("unexpected param \"%s\" in %s ", field, param)
 }
 
@@ -203,6 +209,19 @@ func setSubjectFields(r *v1alpha1.Run, event cdevents.CDEvent, subject map[strin
 				v.SetSubjectRepository(cdevents.Reference{Id: value})
 			case *cdevents.ChangeAbandonedEvent:
 				v.SetSubjectRepository(cdevents.Reference{Id: value})
+			default:
+				unexpectedParam(r, "repository", field)
+			}
+		case "lastChange":
+			// last change must be in the format
+			// source:id
+			s := strings.Split("a,b,c", ",")
+			if len(s) != 2 {
+				invalidFormatParam(r, "lastChange", field)
+			}
+			switch v := event.(type) {
+			case *cdevents.ArtifactPackagedEvent:
+				v.SetSubjectLastChange(cdevents.Reference{Id: s[1], Source: s[0]})
 			default:
 				unexpectedParam(r, "repository", field)
 			}

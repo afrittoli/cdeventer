@@ -15,7 +15,7 @@ require (
 	contrib.go.opencensus.io/exporter/prometheus v0.4.0 // indirect
 	github.com/PuerkitoBio/purell v1.1.1 // indirect
 	github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578 // indirect
-	github.com/afrittoli/cdevents-sdk-go v0.0.0-20220914172750-b227cb6aa95d // indirect
+	github.com/afrittoli/cdevents-sdk-go v0.0.0-20220914220255-527d4a1aca5e // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/blang/semver/v4 v4.0.0 // indirect
 	github.com/blendle/zapdriver v1.3.1 // indirect
