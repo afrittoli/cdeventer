@@ -215,7 +215,7 @@ func setSubjectFields(r *v1alpha1.Run, event cdevents.CDEvent, subject map[strin
 		case "lastChange":
 			// last change must be in the format
 			// source:id
-			s := strings.Split("a,b,c", ",")
+			s := strings.Split(value, ":")
 			if len(s) != 2 {
 				invalidFormatParam(r, "lastChange", field)
 			}
