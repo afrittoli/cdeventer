@@ -44,3 +44,18 @@ spec:
         customDataContentType: "application/json"
         customData: "{\"k1\": \"v1\"}"
 ```
+
+## Architecture
+
+![cdeventer-architecture](images/cdeventer.png)
+
+- A Tekton Event Listener creates and end-point (or sink) for incoming events and webhooks (1)
+- Tekton Triggers allow filtering (2) incoming events, so that we only process those we are
+  interested into 
+- Tekton Trigger Bindings (4) map data from the input JSON payload and headers (3) into input
+  specific Trigger Templates (5)
+- The Template is filled in and a CDEvents `Run` is created (6a) on the Kubernetes Cluster
+- The CDEvents `Run` can also be created directly by a user (6b), like in the
+  [YAML example above](#send-a-cdevent-by-creating-a-run)
+- The CDEventer controller watches CDEvents `Runs`. It reconciles them by sending one CDEvent
+  for each `Run` (8), through the CDEvents go SDK
